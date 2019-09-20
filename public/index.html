@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <title>Document</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-xl bg-dark navbar-dark">
+        <a class="navbar-brand" href="#">LOGO</a>
+        <ul class="navbar-nav nav-pills ml-auto">
+            <li class="nav-item">
+                <a href="#" class="nav-link active">Lista de estudiantes</a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">Inscripcion de Nuevos Estudiantes</a>
+            </li>
+        </ul>
+    </nav>
+
+    <main>
+
+        <div class="container">
+            <div class="navbar navbar-expand-sm bg-dark navbar-dark mt-3">
+                <h1 class="text-white">Estudiantes Inscritos</h1>
+                <form class="form-inline  ml-auto">
+                    <div class="input-group">
+                        <input class="form-control" placeholder="Nombre del estudiante" type="search">
+                        <div class="input-group-append">
+                            <button class="btn btn-success">Buscar<i class="fa fa-search"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <table id="students_table" class="table table-striped">
+                <thead class="thead-dark">
+                    <tr >
+                        <th>Nombre</th>
+                        <th>Apellidos</th>
+                        <th>Estatus</th>
+                        <th>Ver mas</th>
+                    </tr>
+                </thead>
+                </tbody>
+            </table>
+        </div>
+        <!-- Modal con los datos del estudiante seleccionado -->
+        <div class="modal" id="modalStudents">
+            <div class="modal modal-dialog-scrollable">
+                <div class="modal-content">
+
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">Datos del Estudiante</h4>
+                        <button type="button" class="close" onclick="togglerDisplay('modalStudents')">&times;</button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <div class="container">
+                            <form action="" method="post" id="formModal">
+                                <div class="form-group">
+                                    <label for="first_name">Nombre</label>
+                                    <div class="input-group">
+                                        <input class="form-control formModal" type="text" name="first_name" id="firstName">
+                                        <div class="input-group-append">
+                                            <button id="btnFirstName" class="btn btn-warning">Editar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                        
+                                <div class="form-group">
+                                    <label for="last_name">Apellidos</label>
+                                    <div class="input-group">
+                                        <input class="form-control formModal" type="text" name="last_name" id="lastName">
+                                        <div class="input-group-append">
+                                            <button id="btnLastName" class="btn btn-warning">Editar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                        
+                                <div class="form-group disabled">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="sex" id ='M' value="M" checked>
+                                        <label class="form-check-label" for="M">Masculino</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="sex" id='F' value="F">
+                                        <label class="form-check-label" for="F">Femenino</label>
+                                    </div>
+                                </div>
+                        
+                                <div class="form-group">
+                                    <label for="birthdate">Fecha de nacimiento</label>
+                                    <div class="input-group">
+                                        <input class="form-control formModal" type="date" name="birthdate" id="birthdate">
+                                        <div class="input-group-append">
+                                            <button id="btnBirthdate" class="btn btn-warning">Editar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                        
+                                <div class="form-group">
+                                    <label for="email">Correo Electronico</label>
+                                    <div class="input-group">
+                                        <input class="form-control formModal" class=form-control type="email" name="email" id="email">
+                                        <div class="input-group-append">
+                                            <button id="btnEmail" class="btn btn-warning">Editar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                        
+                                <div class="form-group">
+                                    <label for="country">Pais</label>
+                                    <div class="input-group">
+                                        <select class="form-control formModal" name="country" id="country">
+                                            <option value="España">España</option>
+                                            <option value="Venezuela">Venezuela</option>
+                                        </select>
+                                        <div class="input-group-append">
+                                            <button id="btnCountry" class="btn btn-warning">Editar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                        
+                                <div class="form-group">
+                                    <label for="state">Stado</label>
+                                    <div class="input-group">
+                                        <select class="form-control formModal" name="state" id="state"></select>
+                                        <div class="input-group-append">
+                                            <button id="btnState" class="btn btn-warning">Editar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                        
+                                <div class="form-group">
+                                    <label for="city">Ciudad</label>
+                                    <div class="input-group">
+                                        <select class="form-control formModal" name="city" id="city"></select>
+                                        <div class="input-group-append">
+                                            <button id="btnCity" class="btn btn-warning">Editar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                        
+                                <div class="form-group">
+                                    <label for="career">Carrera</label>
+                                    <div class="input-group">
+                                        <select class="form-control formModal" name="career" id="career"></select>
+                                        <div class="input-group-append">
+                                            <button id="btnCareer" class="btn btn-warning">Editar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                        
+                                <div class="form-group">
+                                    <label for="status">Estatus</label>
+                                    <div class="input-group">
+                                        <select class="form-control formModal" name="status" id="status"></select>
+                                        <div class="input-group-append">
+                                            <button id="btnStatus" class="btn btn-warning">Editar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                        
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button id="btnSave" type="button" class="btn btn-success">Guardar Cambios</button>
+                    </div>    
+
+                </div>
+            </div>
+        </div>
+    </main> 
+</body>
+<script src="src/index.js"></script>
+</html>
